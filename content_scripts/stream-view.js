@@ -5,6 +5,7 @@ const ACCOUNT_NUM_SELECTORS = [
   ".account.number",
   ".sdps-footer__account-number",
   ".summary-accountLink",
+  ".sdps-account-selector__right-col",
 ];
 
 const setInput = (input) => {
