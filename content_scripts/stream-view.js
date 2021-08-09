@@ -31,8 +31,9 @@ const setInput = (input) => {
     });
 
     if (response.streamView) {
-      let timesToPoll = 50;
-      const interval = setInterval(() => {
+      const DOMbody = document.body;
+      const config = { attributes: false, childList: true, subtree: true };
+      const handleBlurring = () => {
         for (const selector of ACCOUNT_NUM_SELECTORS) {
           const elems = document.querySelectorAll(selector);
           for (const elem of elems) {
@@ -44,7 +45,9 @@ const setInput = (input) => {
           clearInterval(interval);
           console.info(`Dispatched interval ${interval}`);
         }
-      }, 100);
+      };
+      const observer = new MutationObserver(handleBlurring);
+      observer.observe(DOMbody, config);
     }
   } catch (error) {
     console.error(error);
